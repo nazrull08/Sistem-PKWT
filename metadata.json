@@ -1,0 +1,6 @@
+{
+  "name": "Sistem Manajemen PKWT & PKWTT Karyawan",
+  "description": "Sistem manajemen kontrak kerja PKWT/PKWTT karyawan, cetak dokumen PDF A4 resmi, tanda tangan digital, notifikasi perpanjangan WhatsApp & Email, serta sinkronisasi database.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

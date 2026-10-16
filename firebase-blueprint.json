@@ -1,0 +1,137 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with role-based access",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "description": "Email address" },
+        "name": { "type": "string", "description": "Full name" },
+        "role": { "type": "string", "enum": ["admin", "hr", "manager", "employee"], "description": "User role" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" }
+      },
+      "required": ["email", "name", "role"]
+    },
+    "Employee": {
+      "title": "Employee",
+      "description": "Employee biodata and contract history matching the Excel format",
+      "type": "object",
+      "properties": {
+        "nama": { "type": "string", "description": "Nama lengkap karyawan" },
+        "tempatLahir": { "type": "string", "description": "Tempat lahir" },
+        "tanggalLahir": { "type": "string", "description": "Tanggal lahir (DD/MM/YYYY)" },
+        "jenisKelamin": { "type": "string", "enum": ["Laki-Laki", "Perempuan"], "description": "Jenis kelamin" },
+        "noKtp": { "type": "string", "description": "Nomor KTP / NIK 16 digit" },
+        "alamat": { "type": "string", "description": "Alamat domisili lengkap" },
+        "project": { "type": "string", "description": "Nama proyek / unit penempatan" },
+        "lokasiKerja": { "type": "string", "description": "Lokasi penempatan kerja" },
+        "noRekening": { "type": "string", "description": "Nomor rekening bank" },
+        "bank": { "type": "string", "description": "Nama bank" },
+        "jabatan": { "type": "string", "description": "Jabatan/posisi (contoh: Operator)" },
+        "golongan": { "type": "string", "description": "Golongan jabatan (contoh: 0A)" },
+        "upah": { "type": "number", "description": "Nominal upah bulanan" },
+        "ketUpah": { "type": "string", "description": "Keterangan upah terbilang rupiah" },
+        "masaKontrak": { "type": "string", "description": "Durasi masa kontrak terkini (contoh: 3 Bulan)" },
+        "email": { "type": "string", "description": "Alamat email karyawan" },
+        "noHp": { "type": "string", "description": "Nomor WhatsApp / telepon aktif" },
+        "statusKaryawan": { "type": "string", "enum": ["PKWT", "PKWTT", "SELESAI", "NONAKTIF"], "description": "Status kepegawaian" },
+        "currentContractPhase": { "type": "string", "enum": ["K1", "K2", "K3", "K4", "K5", "PKWTT"], "description": "Tahap kontrak aktif" },
+        "noSurat1": { "type": "string", "description": "Nomor surat kontrak 1" },
+        "noSurat2": { "type": "string", "description": "Nomor surat kontrak 2" },
+        "awalK1": { "type": "string", "description": "Tanggal awal K1" },
+        "akhirK1": { "type": "string", "description": "Tanggal akhir K1" },
+        "ttd1": { "type": "string", "description": "Tanggal TTD 1" },
+        "awalK2": { "type": "string", "description": "Tanggal awal K2" },
+        "akhirK2": { "type": "string", "description": "Tanggal akhir K2" },
+        "ttd2": { "type": "string", "description": "Tanggal TTD 2" },
+        "awalK3": { "type": "string", "description": "Tanggal awal K3" },
+        "akhirK3": { "type": "string", "description": "Tanggal akhir K3" },
+        "ttd3": { "type": "string", "description": "Tanggal TTD 3" },
+        "awalK4": { "type": "string", "description": "Tanggal awal K4" },
+        "akhirK4": { "type": "string", "description": "Tanggal akhir K4" },
+        "ttd4": { "type": "string", "description": "Tanggal TTD 4" },
+        "awalK5": { "type": "string", "description": "Tanggal awal K5" },
+        "akhirK5": { "type": "string", "description": "Tanggal akhir K5" },
+        "ttd5": { "type": "string", "description": "Tanggal TTD 5" }
+      },
+      "required": ["nama", "noKtp", "alamat", "upah"]
+    },
+    "Contract": {
+      "title": "Contract",
+      "description": "Dokumen kontrak resmi PKWT / PKWTT siap cetak",
+      "type": "object",
+      "properties": {
+        "employeeId": { "type": "string", "description": "ID referensi karyawan" },
+        "nomorSurat": { "type": "string", "description": "Nomor resmi surat PKWT" },
+        "nomorSuratSebelumnya": { "type": "string", "description": "Nomor surat PKWT sebelumnya jika perpanjangan" },
+        "tanggalSuratSebelumnya": { "type": "string", "description": "Tanggal surat PKWT sebelumnya" },
+        "periodeAwalSebelumnya": { "type": "string", "description": "Periode mulai sebelumnya" },
+        "periodeAkhirSebelumnya": { "type": "string", "description": "Periode selesai sebelumnya" },
+        "jenisPerjanjian": { "type": "string", "enum": ["PKWT", "PKWTT"], "description": "Jenis perjanjian kerja" },
+        "phase": { "type": "string", "enum": ["K1", "K2", "K3", "K4", "K5", "PKWTT"], "description": "Tahap kontrak" },
+        "namaPihakPertama": { "type": "string", "description": "Nama instansi/perusahaan" },
+        "wakilPihakPertama": { "type": "string", "description": "Nama pimpinan perusahaan" },
+        "jabatanPihakPertama": { "type": "string", "description": "Jabatan pimpinan perusahaan" },
+        "namaKaryawan": { "type": "string", "description": "Nama karyawan (Pihak Kedua)" },
+        "nikKaryawan": { "type": "string", "description": "NIK/KTP karyawan" },
+        "tempatTanggalLahir": { "type": "string", "description": "Tempat tanggal lahir" },
+        "jenisKelamin": { "type": "string", "description": "Jenis kelamin" },
+        "alamatKaryawan": { "type": "string", "description": "Alamat tempat tinggal" },
+        "jabatanKaryawan": { "type": "string", "description": "Jabatan/posisi kerja" },
+        "golonganJabatan": { "type": "string", "description": "Golongan jabatan" },
+        "tanggalMulai": { "type": "string", "description": "Tanggal mulai kontrak" },
+        "tanggalSelesai": { "type": "string", "description": "Tanggal berakhir kontrak" },
+        "upah": { "type": "number", "description": "Nominal gaji pokok gross" },
+        "ketUpah": { "type": "string", "description": "Keterangan upah terbilang" },
+        "namaBank": { "type": "string", "description": "Nama bank penggajian" },
+        "noRekening": { "type": "string", "description": "Nomor rekening gaji" },
+        "atasNamaRekening": { "type": "string", "description": "Atas nama buku tabungan" },
+        "tanggalTtd": { "type": "string", "description": "Tanggal penandatanganan surat" },
+        "tempatTtd": { "type": "string", "description": "Tempat penandatanganan (Jakarta)" },
+        "ttdKaryawan": { "type": "string", "description": "Data digital signature pihak kedua" },
+        "ttdPerusahaan": { "type": "string", "description": "Data digital signature pihak pertama" },
+        "statusTtd": { "type": "string", "enum": ["DRAFT", "SIGNED_BY_EMPLOYEE", "SIGNED_BY_DIRECTOR", "COMPLETED"], "description": "Status ttd digital" }
+      },
+      "required": ["employeeId", "nomorSurat", "namaKaryawan", "upah"]
+    },
+    "NotificationLog": {
+      "title": "NotificationLog",
+      "description": "Riwayat notifikasi WhatsApp & Email masa kontrak",
+      "type": "object",
+      "properties": {
+        "employeeId": { "type": "string", "description": "ID Karyawan" },
+        "namaKaryawan": { "type": "string", "description": "Nama karyawan" },
+        "type": { "type": "string", "enum": ["WHATSAPP", "EMAIL"], "description": "Kanal notifikasi" },
+        "recipient": { "type": "string", "description": "Nomor HP atau alamat email" },
+        "message": { "type": "string", "description": "Isi pesan peringatan" },
+        "status": { "type": "string", "enum": ["SENT", "SCHEDULED", "FAILED"], "description": "Status pengiriman" },
+        "contractEndDate": { "type": "string", "description": "Tanggal kontrak berakhir" },
+        "daysRemaining": { "type": "number", "description": "Sisa hari menjelang kedaluwarsa" },
+        "sentAt": { "type": "string", "description": "Waktu notifikasi terkirim" }
+      },
+      "required": ["employeeId", "type", "recipient"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User authentication profile and role"
+    },
+    "/admins/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Admin identity lookup for ABAC role authorization"
+    },
+    "/employees/{employeeId}": {
+      "schema": { "$ref": "#/entities/Employee" },
+      "description": "Employee database and contract lifecycle history"
+    },
+    "/contracts/{contractId}": {
+      "schema": { "$ref": "#/entities/Contract" },
+      "description": "Formal PKWT/PKWTT contracts and digital signatures"
+    },
+    "/notification_logs/{logId}": {
+      "schema": { "$ref": "#/entities/NotificationLog" },
+      "description": "Audit trail for automated and manual expiry alerts"
+    }
+  }
+}

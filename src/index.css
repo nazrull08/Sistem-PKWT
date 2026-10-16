@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+/* Contract Typography & Paper Setup: Calibri 10pt */
+.contract-document-calibri {
+  font-family: Calibri, 'Segoe UI', Candara, Optima, Arial, sans-serif !important;
+  font-size: 10pt !important;
+  line-height: 1.35 !important;
+  color: #000000 !important;
+}
+
+.contract-document-calibri p,
+.contract-document-calibri div,
+.contract-document-calibri span {
+  font-family: Calibri, 'Segoe UI', Candara, Optima, Arial, sans-serif !important;
+}
+
+/* Specific A4 Print Styling with margins: Top 1cm, Bottom 1.75cm, Left/Right 2.54cm */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin-top: 1cm !important;
+    margin-bottom: 1.75cm !important;
+    margin-left: 2.54cm !important;
+    margin-right: 2.54cm !important;
+  }
+
+  html, body {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow: visible !important;
+  }
+
+  /* Universal shadow reset during print */
+  *, *::before, *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Hide all web UI controls, navigation, action toolbars, modals header bars, and buttons */
+  header, footer, nav, aside, .print\:hidden, button, select, input, .no-print, [role="navigation"] {
+    display: none !important;
+  }
+
+  /* Ensure ALL outer containers expand completely without borders, gray backgrounds, or scroll clipping */
+  #root,
+  #root > div,
+  main,
+  [role="dialog"],
+  .fixed,
+  .backdrop-blur-xs,
+  .overflow-hidden,
+  .overflow-y-auto,
+  .overflow-x-auto,
+  .h-screen,
+  .h-full,
+  .shadow-inner,
+  .rounded-2xl,
+  .rounded-xl {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Printable container reset */
+  #mailmerge-printable-container,
+  #paklaring-printable-document,
+  .contract-document-calibri {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    transform: none !important;
+    zoom: 1 !important;
+    font-size: 10pt !important;
+  }
+
+  /* Individual A4 contract pages: fit exactly into A4 page without borders */
+  .contract-page-a4 {
+    display: block !important;
+    box-shadow: none !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .contract-page-a4:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  .page-break {
+    display: block !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    line-height: 0 !important;
+    font-size: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+  }
+}

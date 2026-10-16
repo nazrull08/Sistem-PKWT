@@ -1,0 +1,53 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isBootstrappedAdmin() {
+      return isSignedIn() && request.auth.token.email == 'turindealex@gmail.com';
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        isBootstrappedAdmin() ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // User collection
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+
+    // Admin lookup collection
+    match /admins/{userId} {
+      allow read, write: if true;
+    }
+
+    // Employee collection - fully enabled for CRUD
+    match /employees/{employeeId} {
+      allow read, write: if true;
+    }
+
+    // Contracts collection - fully enabled
+    match /contracts/{contractId} {
+      allow read, write: if true;
+    }
+
+    // Notification logs collection - fully enabled
+    match /notification_logs/{logId} {
+      allow read, write: if true;
+    }
+  }
+}
